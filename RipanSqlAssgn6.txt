@@ -1,0 +1,73 @@
+1. 
+   select avg(salary) from faculty_008;
+
+   AVG(SALARY)
+-----------
+ 8833.33333
+
+select faculty_name from faculty_008 where salary>(select avg(salary) from faculty_008);
+
+FACULTY_NAME
+---------------
+P.roy
+M.sen
+P.kar
+
+
+2. select faculty_name from faculty_008 where salary>(select avg(salary) from faculty_008) and dept_code='CSE';
+
+   no rows selected 
+
+3. select faculty_name,salary from faculty_008 where salary=(select max(salary) as salary from faculty_008);
+
+   FACULTY_NAME	    SALARY
+--------------- ----------
+P.kar		     11500
+
+
+
+
+   select min(salary) from faculty_008;
+
+  MIN(SALARY)
+-----------
+       5500
+
+
+
+4. select max(salary) from faculty_008 where salary<(select max(salary) from faculty_008);
+
+    MAX(SALARY)
+-----------
+      10500
+
+
+
+
+5.
+
+7. select faculty_name,dept_code from faculty_008 where dept_code in(select dept_code from faculty_008 group by dept_code having count(*)=(select max(count(*))
+from faculty_008 group by dept_code));
+
+
+FACULTY_NAME	DEPT
+--------------- ----
+K.saha		CA
+P.roy		CA
+M.sen		IT
+S.das		IT
+
+
+
+
+select dept_code from facview where F in (select max(F) from facview);
+
+select faculty_name,dept_code from faculty_008 where dept_code=(select dept_code from facview where F in (select max(F) from facview));
+
+
+ create view facview as (select count(faculty_code) as F,dept_code from faculty_008 group by dept_code);
+
+
+
+
+

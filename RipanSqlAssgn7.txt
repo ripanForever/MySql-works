@@ -1,0 +1,90 @@
+1. select faculty_name from faculty_008 where dept_code='IT';
+   
+
+ FACULTY_NAME
+---------------
+S.das
+M.sen
+
+2. select faculty_name from faculty_008 f,department_08 d where f.faculty_code=d.HOD and d.HOD is not NULL;
+
+  FACULTY_NAME
+---------------
+A.roy
+S.das
+P.roy
+K.saha
+M.sen
+P.kar
+
+
+3. alter table subject_08 add department varchar2(4);
+   alter table subject_08 add date_of_join date;
+
+
+4. update subject_08 set date_of_join='1-02-1997',department='CSE' where subjectcode=401;
+   update subject_08 set date_of_join='11-06-1998',department='MCA' where subjectcode=402;
+   update subject_08 set date_of_join='4-07-1998',department='EE' where subjectcode=403;
+   update subject_08 set date_of_join='21-08-1998',department='MECH' where subjectcode=404;
+   update subject_08 set date_of_join='15-11-2001',department='ECE' where subjectcode=405;
+   update subject_08 set date_of_join='25-05-1998',department='IT' where subjectcode=406;
+   delete from subject_08 where date_of_join='21-07-2000';
+
+  
+
+alter table subject_08 drop column date_of_join;
+alter table subject_08 drop column department;
+
+select * from subject_08;
+
+ SUBJ SUBJECT_NAME    FACU DEPA DATE_OF_
+---- --------------- ---- ---- --------
+401  Data Structure  F101 CSE  01-02-97
+402  Fundamental C   F103 MCA  11-06-98
+403  Architecture    F104 EE   04-07-98
+404  DBMS	     F102 MECH 21-08-98
+405  C++	     F106 ECE  15-11-01
+406  Mathmetics      F105 IT   25-05-98
+
+
+
+
+
+
+5. select faculty_name from faculty_008 where faculty_code in(select faculty from subject_08 where date_of_join>'25-05-98' and date_of_join<'21-08-98');
+
+  FACULTY_NAME
+---------------
+P.roy
+K.saha
+
+
+
+6. select faculty_name from faculty_008 where faculty_code not in(select faculty from subject_08 where date_of_join>'25-05-98' and date_of_join<'21-08-98');
+
+    
+   FACULTY_NAME
+---------------
+A.roy
+P.kar
+S.das
+M.sen
+
+7. select avg(salary) from faculty_008;
+
+   AVG(SALARY)
+-----------
+ 8833.33333
+
+select faculty_name from faculty_008 where salary>(select avg(salary) from faculty_008);
+
+FACULTY_NAME
+---------------
+P.roy
+M.sen
+P.kar
+
+
+
+select faculty_name from faculty_008 where dept_code in(select dept_code from department_08 where dept_name='info tech');
+

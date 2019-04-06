@@ -1,0 +1,135 @@
+1.Create table student_08(reg_no varchar2(6) not null,roll_no number(6) not null, name varchar2(10) not null, address varchar2(15) not null,phone_no number(10),year_of_adm number(4) not null,dept_code varchar2(4) not null,year number(1) not null,birth_date date not null);
+
+insert into student_08 values('012301',123001,'Ashish','Jadavpur',24761894,2003,'CSE',3,'01-Jun-1981');
+
+insert into student_08 values('012315',123015,'Kamal','Kasba',24424987,2003,'CSE',3,'19-Sep-1981');
+
+insert into student_08 values('012424',124024,'Ipsita','Kaikhali',25739608,2004,'CSE',2,'15-Aug-1982');
+
+insert into student_08 values('012250',122050,'Anita','Hooghly',36719695,2002,'IT',4,'22-Dec-1980');
+
+insert into student_08 values('012344',123044,'Biplob','Howrah','',2003,'IT',3,'03-Jan-1982');
+
+insert into student_08 values('012357',123057,'Samik','Barasat',25426742,2003,'IT',3,'15-Jul-1981');
+
+insert into student_08 values('012419',124019,'Srija','Garia',24755655,2004,'EE',2,'25-oct-1982');
+
+insert into student_08 values('012427',124027,'Saibal','Garia',24753306,2004,'ECE',2,'22-Mar-1983');
+
+insert into student_08 values('012236',122036,'Santanu','DumDum','',2002,'ECE',4,'11-Dec-1980');
+
+insert into student_08 values('012349',123049,'Gita','Kasba',24428982,2003,'MCA',3,'14-Apr-1981');
+
+
+2.select name,address,year_of_adm from student_08;
+
+3.select name,year from student_08 where dept_code='CSE';
+
+4.select name,dept_code from student_08 where year=3;
+
+5.1.select name from student_08 where name like '_a%';
+
+5.2.select name from student_08 where name like '__i%';
+
+5.3.select reg_no from student_08 where name like '%b';
+
+5.4.select roll_no from student_08 where name like 'S%';
+
+5.5.select roll_no,reg_no from student_08 where name like '__s%';
+
+6.select name from student_08 order by name ASC;
+
+7.select name,address from student_08 where year_of_adm=2004;
+
+8.select name from student_08 where phone_no is null;
+
+9.delete from student_08 where roll_no
+
+
+
+REG_NO	  ROLL_NO NAME		  ADDRESS	    PHONE_NO YEAR_OF_ADM DEPT
+------ ---------- --------------- --------------- ---------- ----------- ----
+      YEAR BIRTH_DA COLLEGE_PHONE_NO
+---------- -------- ----------------
+012301	   123001 Ashish	  Jadavpur	    24761894	    2003 CSE
+	 3 01-06-81	    25739607
+
+012315	   123015 Kamal 	  Kasba 	    24424987	    2003 CSE
+	 3 19-09-81	    25739607
+
+012424	   124024 Ipsita	  Kaikhali	    25739608	    2004 CSE
+	 2 15-08-82	    25739607
+
+
+REG_NO	  ROLL_NO NAME		  ADDRESS	    PHONE_NO YEAR_OF_ADM DEPT
+------ ---------- --------------- --------------- ---------- ----------- ----
+      YEAR BIRTH_DA COLLEGE_PHONE_NO
+---------- -------- ----------------
+012250	   122050 Anita 	  Hooghly	    36719695	    2002 IT
+	 4 22-12-80	    25739607
+
+012344	   123044 Biplob	  Howrah			    2003 IT
+	 3 03-01-82	    25739607
+
+012357	   123057 Samik 	  Birati	    25426742	    2003 IT
+	 3 15-07-81	    25739607
+
+
+REG_NO	  ROLL_NO NAME		  ADDRESS	    PHONE_NO YEAR_OF_ADM DEPT
+------ ---------- --------------- --------------- ---------- ----------- ----
+      YEAR BIRTH_DA COLLEGE_PHONE_NO
+---------- -------- ----------------
+012419	   124019 Srija 	  Garia 	    24755655	    2004 EE
+	 2 25-10-82	    25739607
+
+012427	   124027 Saibal	  Garia 	    24753306	    2004 ECE
+	 2 22-03-83	    25739607
+
+012236	   122036 Santanu	  DumDum			    2002 ECE
+	 4 11-12-80	    25739607
+
+
+REG_NO	  ROLL_NO NAME		  ADDRESS	    PHONE_NO YEAR_OF_ADM DEPT
+------ ---------- --------------- --------------- ---------- ----------- ----
+      YEAR BIRTH_DA COLLEGE_PHONE_NO
+---------- -------- ----------------
+012349	   123049 Gita		  Kasba 	    24428982	    2003 MCA
+	 3 14-04-81	    25739607
+
+
+
+
+
+
+
+
+1. select count(name),dept_code from student_08 group by dept_code;
+
+   COUNT(NAME) DEPT
+----------- ----
+	  3 IT
+	  1 EE
+	  3 CSE
+	  1 MCA
+	  2 ECE
+
+
+2. update student_08 set address='Birati' where name='Samik' and roll_no='123057';
+
+3.alter table student_08 add college_phone_no number(10);
+  update student_08 set college_phone_no='25739607';
+
+4.alter table student_08 modify name char(15);
+
+5. alter table student_08 add markobtained number(10);
+
+6.update student_08 set markobtained=90 where reg_no='012301';
+
+7.alter table student_08 drop column markobtained;
+
+8.alter table student_08 add primary key(reg_no);
+
+9. alter table student_08 add check(year='1' or year='2' or year='3' or year='4');
+
+10. alter table student_08 add constraint birth_ch check(birth_date>='01-Jun-1980' and birth_date<='31-Mar-1983');
+  

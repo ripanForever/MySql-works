@@ -1,0 +1,96 @@
+create table subject_08(subjectcode varchar2(4) primary key,subject_name varchar2(15) not null,faculty varchar2(4) not null,foreign key(faculty) references faculty_008(faculty_code));
+
+insert into subject_08 values('401','Data Structure','F101');
+insert into subject_08 values('402','Fundamental C','F103');
+insert into subject_08 values('403','Architecture','F104');
+insert into subject_08 values('404','DBMS','F102');
+insert into subject_08 values('405','C++','F106');
+insert into subject_08 values('406','Mathmetics','F105');
+
+select * from subject_08;
+
+SUBJ SUBJECT_NAME    FACU DEPA Y
+---- --------------- ---- ---- -
+401  Data Structure  F101
+402  Fundamental C   F103
+403  Architecture    F104
+404  DBMS	         F102
+405  C++	         F106
+406  Mathmetics      F105
+
+
+2.  update faculty_008 set salary=salary+500;
+     
+   FACU FACULTY_NAME    DATE_OF_ DEPT     SALARY
+---- --------------- -------- ---- ----------
+F101 A.roy	     01-02-03 CSE	 5500
+F102 S.das	     01-03-05 IT	 7500
+F103 P.roy	     02-05-07 CA	 9500
+F104 K.saha	     04-07-03 CA	 8500
+F105 M.sen	     31-01-07 IT	10500
+F106 P.kar	     25-04-09 CHEM	11500
+
+
+  
+3. select faculty_name,name from faculty_008,student_08 where faculty_name like 'S%' and name like 'S%';
+  
+FACULTY_NAME	NAME
+--------------- ---------------
+S.das		Samik
+S.das		Srija
+S.das		Saibal
+S.das		Santanu
+
+
+ 
+4. select name from student_08 where address='Kaikhali';
+
+NAME
+---------------
+Ipsita
+
+
+
+
+5. select faculty_name from faculty_008 where dept_code='IT';
+
+    FACULTY_NAME
+---------------
+S.das
+M.sen
+
+
+
+
+6.select faculty_name from faculty_008 f,department_08 d where f.faculty_code=d.HOD and d.HOD is not NULL;
+
+7.alter table subject_08 add department varchar2(4);
+  alter table subject_08 add year varchar2(1);
+
+   SUBJ SUBJECT_NAME    FACU DEPA Y
+---- --------------- ---- ---- -
+401  Data Structure  F101
+402  Fundamental C   F103
+403  Architecture    F104
+404  DBMS	         F102
+405  C++	         F106
+406  Mathmetics      F105
+
+
+
+8. update subject_08 set department='CSE' where subjectcode='401';
+
+    SUBJ SUBJECT_NAME    FACU DEPA Y
+---- --------------- ---- ---- -
+401  Data Structure  F101 CSE
+402  Fundamental C   F103
+403  Architecture    F104
+404  DBMS	         F102
+405  C++	         F106
+406  Mathmetics      F105
+
+
+
+
+
+9. drop table subject_08;

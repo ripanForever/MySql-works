@@ -1,0 +1,124 @@
+create table faculty_008(faculty_code varchar2(4) primary key check(faculty_code like 'F%'),faculty_name char(15) not null,date_of_join date not null,dept_code varchar2(4) not null check(dept_code in('CSE','IT','CA','CHEM','MTHS','PHYS','HUM','BBA')));
+
+create table department_08(dept_code varchar2(4) primary key,dept_name varchar2(15) not null,HOD varchar2(4) not null ,foreign key(HOD) references faculty_008(faculty_code));
+
+insert into faculty_008 values('F101','A.roy','01-02-2003','CSE');
+insert into faculty_008 values('F102','S.das','01-03-2005','IT');
+insert into faculty_008 values('F103','P.roy','02-05-2007','CA');
+insert into faculty_008 values('F104','K.saha','04-07-2003','CA');
+insert into faculty_008 values('F105','M.sen','31-01-2007','IT');
+insert into faculty_008 values('F106','P.kar','25-04-2009','CHEM');
+
+insert into department_08 values('CSE','comp sc','F101');
+insert into department_08 values('IT','info tech','F102');
+insert into department_08 values('CA','comp app','F103');
+insert into department_08 values('CHEM','chemistry','F104');
+insert into department_08 values('MTHS','maths','F105');
+insert into department_08 values('PHY','physics','F106');
+
+select * from faculty_008;
+select * from department_08;
+
+
+FACU FACULTY_NAME    DATE_OF_ DEPT     SALARY
+---- --------------- -------- ---- ----------
+F101 A.roy	     01-02-03 CSE	 5500
+F102 S.das	     01-03-05 IT	 7500
+F103 P.roy	     02-05-07 CA	 9500
+F104 K.saha	     04-07-03 CA	 8500
+F105 M.sen	     31-01-07 IT	10500
+F106 P.kar	     25-04-09 CHEM	11500
+
+DEPT DEPT_NAME	     HOD
+---- --------------- ----
+CSE  comp sc	     F101
+IT   info tech	     F102
+CA   comp app	     F103
+CHEM chemistry	     F104
+MTHS maths	         F105
+PHY  physics	     F106
+
+
+
+1. select faculty_name from faculty_008 where dept_code='CSE';
+
+   FACULTY_NAME
+---------------
+A.roy
+
+
+2. select count(faculty_code) from faculty_008 where dept_code='CA';
+
+  COUNT(FACULTY_CODE)
+-------------------
+		  2
+
+
+
+3. select HOD,dept_name from department_08;
+
+   HOD  DEPT_NAME
+---- ---------------
+F101 comp sc
+F102 info tech
+F103 comp app
+F104 chemistry
+F105 maths
+F106 physics
+
+
+4. select name from student_08 where year=3 and dept_code='CSE' and birth_date<'15-08-82';
+
+  no rows selected
+
+
+
+5. alter table faculty_008 add salary number(8);
+6. update faculty_008 set salary='5000' where faculty_code='F101';
+   update faculty_008 set salary='7000' where faculty_code='F102';
+   update faculty_008 set salary='9000' where faculty_code='F103';
+   update faculty_008 set salary='8000' where faculty_code='F104';
+   update faculty_008 set salary='10000' where faculty_code='F105';
+   update faculty_008 set salary='11000' where faculty_code='F106';
+
+
+  FACU FACULTY_NAME    DATE_OF_ DEPT     SALARY
+---- --------------- -------- ---- ----------
+F101 A.roy	     01-02-03 CSE	 5500
+F102 S.das	     01-03-05 IT	 7500
+F103 P.roy	     02-05-07 CA	 9500
+F104 K.saha	     04-07-03 CA	 8500
+F105 M.sen	     31-01-07 IT	10500
+F106 P.kar	     25-04-09 CHEM	11500
+
+
+
+7. select faculty_name,salary from faculty_008 where salary>8000;
+
+ FACULTY_NAME	    SALARY
+--------------- ----------
+P.roy		      9500
+K.saha		      8500
+M.sen		     10500
+P.kar		     11500
+
+
+8.select faculty_name,dept_name from faculty_008 f,department_08 d where f.salary<=12000 and f.salary>=8000 and d.HOD=f.faculty_code;
+
+  FACULTY_NAME	DEPT_NAME
+--------------- ---------------
+P.roy		comp app
+K.saha		chemistry
+M.sen		maths
+P.kar		physics
+
+
+
+
+9. select faculty_name,salary from faculty_008 where salary=(select max(salary) as salary from faculty_008);
+   select faculty_name,salary from faculty_008 where salary<(select max(salary) as salary from faculty_008);
+  
+FACULTY_NAME	    SALARY
+--------------- ----------
+P.kar		     11500
+

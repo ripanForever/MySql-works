@@ -1,0 +1,101 @@
+1. select to_char(Date_Of_Join, 'Mon-DD-YY') from faculty_008;
+
+
+TO_CHAR(DATE_OF_JOIN
+--------------------
+Feb-01-03
+Mar-01-05
+May-02-07
+Jul-04-03
+Jan-31-07
+Apr-25-09
+
+
+
+
+ select faculty_name from faculty_008 where to_char(Date_Of_Join,'Mon') in ('May','Jun','Jul','Aug');
+   update faculty_008 set date_of_join='1-02-1997' where faculty_code='F101';
+   update faculty_008 set date_of_join='11-06-1998' where faculty_code='F102';
+   update faculty_008 set date_of_join='4-07-1998' where faculty_code='F103';
+   update faculty_008 set date_of_join='21-08-1998' where faculty_code='F104';
+   update faculty_008 set date_of_join='15-11-2001' where faculty_code='F105';
+   update faculty_008 set date_of_join='25-05-1998' where faculty_code='F106';
+   
+
+2.select to_char(date_of_join, 'YYYY-MON-DD') from faculty_008;
+
+TO_CHAR(DATE_OF_JOIN
+--------------------
+1997-FEB-01
+1998-JUN-11
+1998-JUL-04
+1998-AUG-21
+2001-NOV-15
+1998-MAY-25
+
+3. select to_char(Date_Of_Join, 'DDth-Mon-YY') from faculty_008;
+
+TO_CHAR(DATE_OF_JOIN
+--------------------
+01ST-Feb-97
+11TH-Jun-98
+04TH-Jul-98
+21ST-Aug-98
+15TH-Nov-01
+25TH-May-98
+
+
+4. select to_char(Date_Of_Join, 'DDsp-Mon-YY') from faculty_008;
+
+TO_CHAR(DATE_OF_JOIN,'DDSP-M
+----------------------------
+ONE-Feb-97
+ELEVEN-Jun-98
+FOUR-Jul-98
+TWENTY-ONE-Aug-98
+FIFTEEN-Nov-01
+TWENTY-FIVE-May-98
+
+5. select to_char(Date_Of_Join, 'Mon') from faculty_008;
+
+   TO_CHAR(DATE
+------------
+Feb
+Jun
+Jul
+Aug
+Nov
+May
+
+6.select to_char(Date_Of_Join, 'MM') from faculty_008;
+
+TO
+--
+02
+06
+07
+08
+11
+05
+
+
+ 7.select sysdate from dual;
+
+  SYSDATE
+--------
+02-04-19
+
+8. select add_months(sysdate,4) from dual;
+
+ ADD_MONT
+--------
+02-08-19
+
+
+9.select last_day(sysdate) from dual;
+
+LAST_DAY
+--------
+30-04-19
+
+
